@@ -17,7 +17,7 @@ from keras.preprocessing.image import Iterator
 def train(adata, 
           network, 
           output_dir=None, 
-          optimizer='rmsprop', 
+          optimizer='RMSprop', 
           learning_rate=None, 
           train_on_full=False,
           epochs=300, 
@@ -94,7 +94,7 @@ def train(adata,
 
     return loss
 
-def evaluate(adata, network, optimizer='rmsprop',
+def evaluate(adata, network, optimizer='RMSprop',
         batch_size = 32,
         nonmissing_indicator=None):
 

@@ -2,12 +2,12 @@
 
 import os
 import numpy as np
-import scanpy.api as sc
+import scanpy as sc
 
 import keras
 from keras.layers import Input, Dense, Dropout, Activation, BatchNormalization
 from keras.models import Model
-from keras.objectives import mean_squared_error
+from keras.losses import mean_squared_error
 from keras import backend as K
 
 import tensorflow as tf

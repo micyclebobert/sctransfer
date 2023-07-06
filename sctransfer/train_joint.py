@@ -17,7 +17,7 @@ def train_joint(adata,
                 network, 
                 output_dir=None, 
                 nonmissing_indicator=None,
-                optimizer='rmsprop', 
+                optimizer='RMSprop', 
                 learning_rate=None, 
                 train_on_full=False,
                 epochs=300, 
@@ -39,8 +39,6 @@ def train_joint(adata,
             np.array([network.shared_size] * adata.n_obs),
             np.array(range(adata.n_obs + 1))), shape = (adata.n_obs, network.shared_size + 1))
         shared_mat = temp + shared_mat
-
-
 
     if adata.uns['species'] == 'Human':
         mouse_mat = csr_matrix((adata.n_obs, network.input_size_mouse + 1), dtype = np.int8)
@@ -83,9 +81,6 @@ def train_joint(adata,
                     theta = model.get_layer('dispersion_mouse_nonumi').theta_exp, 
                     nonmissing_indicator = nonmissing_indicator,
                 ridge_lambda = network.ridge, debug = network.debug).loss
-
-
-
 
     
     if output_dir is not None:
@@ -131,12 +126,12 @@ def train_joint(adata,
     if verbose_sum:
         model.summary()
 
-    inputs = {'human': human_mat, 
-            'mouse': mouse_mat,
-            'shared': shared_mat,
-            'size_factors': adata.obs.size_factors}
+    # inputs = {'human': human_mat, 
+    #         'mouse': mouse_mat,
+    #         'shared': shared_mat,
+    #         'size_factors': adata.obs.size_factors}
 
-    output = adata.raw.X
+    output = adata.raw.X.toarray()
 
     if train_on_full:
         validation_split = 0

@@ -1,4 +1,4 @@
-from .sctransfer.saverx_train import SaverXTrain
+from .saverx_train import SaverXTrain
 import anndata
 import numpy as np
 import os 
