@@ -40,7 +40,7 @@ def autoencode(n_inoutnodes_human,
         if mtx_file is None:
             print('Either adata or mtx_file should be provided')
             return
-        adata = anndata.read_mtx(mtx_file).transpose()
+        adata = anndata.io.read_mtx(mtx_file).transpose()
         if data_name == '':
             data_name = re.sub(r'.*/', '', mtx_file)
             data_name = data_name.replace('.mtx', '') + '_'
@@ -87,7 +87,7 @@ def autoencode(n_inoutnodes_human,
 
     if pred_adata or pred_mtx_file:
         if pred_adata is None:
-            pred_adata = anndata.read_mtx(pred_mtx_file).transpose()
+            pred_adata = anndata.io.read_mtx(pred_mtx_file).transpose()
         else:
             pred_adata.X = csr_matrix(pred_adata.X)
         pred_adata.uns['species'] = species

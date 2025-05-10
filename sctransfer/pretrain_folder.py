@@ -37,7 +37,7 @@ def pretrainFolder(folder,
     data_list = []
     for ff in mtx_files:
         print(ff)
-        data_list.append(anndata.read_mtx(ff).transpose())
+        data_list.append(anndata.io.read_mtx(ff).transpose())
     print(species_list)
     print(data_type_list)
 
