@@ -87,7 +87,7 @@ def train(adata,
     else:
         validation_split = 0.1
 
-    loss = model.fit(sparse_inputs, output,
+    loss = model.fit(inputs, output,
                      epochs=epochs,
                      batch_size=batch_size,
                      shuffle=True,
