@@ -138,7 +138,9 @@ def train_joint(adata,
     else:
         validation_split = 0.1
 
-    loss = model.fit(inputs, output,
+    dense_inputs = {k: v.toarray() if scipy.sparse.issparse(v) else v 
+                    for k, v in inputs.items()}
+    loss = model.fit(dense_inputs, output,
                      epochs=epochs,
                      batch_size=batch_size,
                      shuffle=True,
