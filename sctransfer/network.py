@@ -1,6 +1,7 @@
 ## code simplified from the dca package
 
 import os
+import scipy as sp
 import numpy as np
 import scanpy as sc
 
@@ -121,7 +122,7 @@ class Autoencoder():
         rownames = adata.obs_names.values
 
    #     print('Calculating reconstructions...')
-        model_input = adata.X.toarray().astype(np.float32) if issparse(adata.X) else adata.X.astype(np.float32)
+        model_input = adata.X.toarray().astype(np.float32) if sp.sparse.issparse(adata.X) else adata.X.astype(np.float32)
         res['mean_norm'] = self.extra_models['mean_norm'].predict(model_input)
         
         return res
