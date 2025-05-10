@@ -68,7 +68,7 @@ def normalize(adata, filter_min_counts=True, size_factors=True, logtrans_input=T
         n_counts=adata.X.sum(axis = 1)
    
     if size_factors:
-        sc.pp.normalize_per_cell(adata, counts_per_cell_after = 10000)
+        sc.pp.normalize_total(adata, target_sum = 10000)
         adata.obs['size_factors'] = n_counts / 10000 #/ np.median(adata.obs.n_counts)
 
     if logtrans_input:
