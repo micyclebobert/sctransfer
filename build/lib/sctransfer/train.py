@@ -11,7 +11,7 @@ import tensorflow as tf
 import keras.optimizers as opt
 from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 from keras import backend as K
-from keras.preprocessing.image import Iterator
+from keras.api.preprocessing.image import Iterator
 
 
 def train(adata, 
