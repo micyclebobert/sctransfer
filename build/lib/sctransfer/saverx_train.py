@@ -130,8 +130,8 @@ def SaverXTrain(adata_list,
         else:
             stop_count = 0
             eval_err = err
-            print("Evaluation error reduced. Save model weights to file %s/weights.hdf5" % out_dir)
-            net.model['joint_output'].save_weights("%s/weights.hdf5" % out_dir)
+            print("Evaluation error reduced. Save model weights to file %s/w.weights.h5" % out_dir)
+            net.model['joint_output'].save_weights("%s/w.weights.h5" % out_dir)
 
         if stop_count == reduce_lr:
             learning_rate = old_lr * 0.1

@@ -53,7 +53,7 @@ def train(adata,
     callbacks = []
 
     if save_weights and output_dir is not None:
-        checkpointer = ModelCheckpoint(filepath="%s/weights.hdf5" % output_dir,
+        checkpointer = ModelCheckpoint(filepath="%s/w.weights.h5" % output_dir,
                                        verbose=verbose,
                                        save_weights_only=True,
                                        save_best_only=True)

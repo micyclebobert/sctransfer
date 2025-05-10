@@ -89,7 +89,7 @@ def autoencode(adata = None,
             nonmissing_indicator = nonmissing_indicator,
             verbose = verbose, verbose_sum = verbose_sum, verbose_fit = verbose_fit)
 
-    net.load_weights("%s/weights.hdf5" % out_dir)
+    net.load_weights("%s/w.weights.h5" % out_dir)
     
     if pred_adata or pred_mtx_file:
         del adata

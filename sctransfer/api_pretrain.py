@@ -129,7 +129,7 @@ def autoencode(n_inoutnodes_human,
             nonmissing_indicator = nonmissing_indicator,
             **training_kwargs)
 
-    model.load_weights("%s/weights.hdf5" % out_dir)
+    model.load_weights("%s/w.weights.h5" % out_dir)
 
 
 
