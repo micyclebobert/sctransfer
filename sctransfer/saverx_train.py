@@ -2,7 +2,7 @@ import os, tempfile, shutil
 import anndata
 import numpy as np
 import tensorflow as tf
-from keras import backend as K
+from tensorflow.keras import backend as K
 import pandas as pd
 from scipy.sparse import csr_matrix
 

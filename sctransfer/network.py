@@ -8,7 +8,7 @@ import keras
 from keras.layers import Input, Dense, Dropout, Activation, BatchNormalization
 from keras.models import Model
 from keras.losses import mean_squared_error
-from keras import backend as K
+from tensorflow.keras import backend as K
 
 import tensorflow as tf
 
