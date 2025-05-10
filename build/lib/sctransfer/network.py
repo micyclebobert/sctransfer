@@ -141,7 +141,7 @@ class NBConstantDispAutoencoder(Autoencoder):
         output = ColWiseMultLayer(name='output')([mean, self.sf_layer])
 
         nb = NB(disp.theta_exp, nonmissing_indicator = self.nonmissing_indicator)
-        self.extra_models['dispersion'] = lambda :K.function([], [nb.theta])([])[0].squeeze()
+        self.extra_models['dispersion'] = lambda :K.Function([], [nb.theta])([])[0].squeeze()
         self.extra_models['mean_norm'] = Model(inputs=self.input_layer, outputs=mean)
         self.model = Model(inputs=[self.input_layer, self.sf_layer], outputs=output)
 
