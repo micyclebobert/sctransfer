@@ -5,6 +5,7 @@ import os
 from .loss import NB
 #from hyper import hyper
 
+import scipy as sp
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -81,7 +82,7 @@ def train(adata,
     else:
         validation_split = 0.1
 
-    dense_inputs = {k: v.toarray() if scipy.sparse.issparse(v) else v 
+    dense_inputs = {k: v.toarray() if sp.sparse.issparse(v) else v 
                     for k, v in inputs.items()}
     loss = model.fit(dense_inputs, output,
                      epochs=epochs,
