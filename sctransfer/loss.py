@@ -97,7 +97,8 @@ class NB(object):
             # Clip theta
             theta = tf.minimum(self.theta, 1e6)
 
-            t1 = tf.math.lgamma(theta+eps) + tf.math.lgamma(y_true+1.0) - tf.math.lgamma(y_true+theta+eps)
+            y_true_dense = tf.sparse.to_dense(y_true) if isinstance(y_true, tf.sparse.SparseTensor) else y_true
+            t1 = tf.math.lgamma(theta+eps) + tf.math.lgamma(y_true_dense+1.0) - tf.math.lgamma(y_true_dense+theta+eps)
             t2 = (theta+y_true) * tf.math.log(1.0 + (y_pred/(theta+eps))) + (y_true * (tf.math.log(theta+eps) - tf.math.log(y_pred+eps)))
 
             if self.debug:
