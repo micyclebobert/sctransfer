@@ -60,7 +60,7 @@ class Autoencoder():
 
     def build(self):
 
-        self.input_layer = Input(shape=(self.input_size,), name='count')
+        self.input_layer = Input(shape=(self.input_size,), name='count', sparse = True)
         self.sf_layer = Input(shape=(1,), name='size_factors')
         last_hidden = self.input_layer
 

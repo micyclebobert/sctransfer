@@ -72,9 +72,14 @@ def train(adata,
     if verbose_sum:
         model.summary()
 
-    inputs = {'count': adata.X, 'size_factors': adata.obs.size_factors}
+    # Convert adata.X to a SparseTensor
+    sparse_inputs = tf.sparse.SparseTensor(
+        indices=np.array(adata.X.nonzero()).T,  # Non-zero indices
+        values=adata.X.data,                   # Non-zero values
+        dense_shape=adata.X.shape              # Shape of the dense matrix
+    )
 
-    output = adata.raw.X
+    inputs = {'count': sparse_inputs, 'size_factors': adata.obs.size_factors}
 
     if train_on_full:
         validation_split = 0
